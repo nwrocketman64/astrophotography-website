@@ -1,0 +1,120 @@
+/* Code that affects the whole page */
+body {
+    background-color: #EEE;
+    font-family: 'Quicksand', sans-serif;
+    font-size: larger;
+}
+
+#page {
+    max-width: 95%;
+    margin: 0 auto;
+    line-height: 1.4em;
+}
+
+h2, h3, h4 {
+    border-bottom: black solid 1px;
+    padding-bottom: 5px;
+}
+
+/* Code for the header section of the page */
+header {
+    padding: 20px;
+    background-color: white;
+    border-top: lightblue solid 5px;
+    border-left: lightblue solid 5px;
+    border-right: lightblue solid 5px;
+    margin-top: 20px;
+    border-radius: 15px 15px 0px 0px;
+    line-height: 2em;
+}
+
+/* Code the main menu of the page */
+nav {
+    background-color: #333;
+    overflow: hidden;
+    border-bottom: lightblue solid 5px;
+    border-left: lightblue solid 5px;
+    border-right: lightblue solid 5px;
+    border-radius: 0px 0px 15px 15px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li:first-child {
+    display: block;
+}
+
+nav ul li {
+    display: none;
+}
+
+nav ul li a {
+    display: block;
+    padding: 0.75rem;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    font-weight: 700;
+}
+
+nav ul li a:hover {
+    color: white;
+    background-color: black;
+    transition: all 0.63s ease 0s;
+}
+
+#thePage {
+    font-weight: bold;
+    color: gold;
+}
+
+.responsive li {
+    display: block;
+}
+
+/* Code for the main section of the page */
+main {
+    padding: 20px;
+    padding-bottom: 0px;
+    background-color: white;
+    border-top: lightblue solid 5px;
+    border-left: lightblue solid 5px;
+    border-right: lightblue solid 5px;
+    margin-top: 20px;
+    border-radius: 15px 15px 0px 0px;
+    margin-bottom: -20px;
+}
+
+/* Code for the contact form */
+.container label {
+    display: block;
+    margin-top: 10px;
+}
+
+.container input {
+    display: block;
+    padding: 10px;
+}
+
+/* Code for the footer section of the page */
+footer {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    background-color: white;
+    border-bottom: lightblue solid 5px;
+    border-left: lightblue solid 5px;
+    border-right: lightblue solid 5px;
+    border-radius: 0px 0px 15px 15px;
+    margin-bottom: 20px;
+}
+
+footer p {
+    border-top: black solid 1px;
+    font-size: 0.5em;
+    text-align: center;
+}

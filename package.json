@@ -1,0 +1,37 @@
+{
+  "name": "astrophotography-website",
+  "version": "1.0.0",
+  "description": "The code base for the astrophotography website",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app.js",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nwrocketman64/astrophotography-website.git"
+  },
+  "author": "Nathan Webb",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/nwrocketman64/astrophotography-website/issues"
+  },
+  "homepage": "https://github.com/nwrocketman64/astrophotography-website#readme",
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "connect-flash": "^0.1.1",
+    "connect-mongodb-session": "^3.1.1",
+    "csurf": "^1.11.0",
+    "custom-env": "^2.0.1",
+    "express": "^4.17.2",
+    "express-session": "^1.17.2",
+    "express-validator": "^6.14.0",
+    "mongoose": "^6.1.2",
+    "multer": "^1.4.4",
+    "nodemailer": "^6.7.2",
+    "nunjucks": "^3.2.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}

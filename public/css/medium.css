@@ -1,0 +1,36 @@
+/* Tablet Size Viewports */
+@media only screen and (min-width: 37em) {
+
+    /* Code for the header */
+    header {
+        text-align: center;
+    }
+
+    /* Code for the main menu */
+    nav ul {
+        display: flex;
+    }
+
+    nav ul li {
+        display: block;
+        flex: 1 1 auto;
+    }
+
+    nav ul a {
+        text-align: center;
+    }
+
+    nav ul li:first-child {
+        display: none;
+    }
+
+    .ham {
+        display: none;
+    }
+
+    /* Code for the main section */
+    h2, h3, h4 {
+        text-align: center;
+        font-size: 1.6em;
+    }
+}
