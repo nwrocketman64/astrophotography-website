@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <section>
+        <h2>List of Images</h2>
+        <ul>
+        {% for image in images %}
+            <li>
+                {{ image.title }} | <a href="/admin/edit-image/{{ image.id }}">Edit Image</a> | <a href="/admin/delete-image/{{ image.id }}">Delete Image</a>
+            </li>
+        {% endfor %}
+        </ul>
+    </section>
+    <section>
+        <h2>Other Links</h2>
+        <ul>
+            <li>
+                <a href="/admin/add-image">Add an image: </a>Click
+                here to add an image.
+            </li>
+            <li>
+                <a href="/admin/reset-password">Reset Password: </a>Click here
+                to reset the password.
+            </li>
+        </ul>
+        <form action="/logout" method="POST">
+            <button>Logout</button>
+            <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+        </form>
+    </section>
+{% endblock %}

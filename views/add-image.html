@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <section>
+        <h2>Add an image</h2>
+        <p>{{ errorMessage }}</p>
+        <form action="/admin/add-image" method="POST" enctype="multipart/form-data">
+            <label for="image">Image: </label>
+            <input type="file" name="image" id="image">
+            <label for="object">Object: </label>
+            <input type="text" name="object" id="object">
+            <label for="date">Date and Time Taken: </label>
+            <input type="datetime" name="date" id="date">
+            <label for="telescope">Telescope Used: </label>
+            <input type="text" name="telescope" id="telescope">
+            <label for="comments">Comments: </label>
+            <textarea name="comments" id="comments" rows="10"></textarea>
+        </form>
+    </section>
+{% endblock %}

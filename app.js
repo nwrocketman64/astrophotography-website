@@ -18,8 +18,8 @@ const errorController = require('./controllers/error');
 
 // Import the routes.
 const siteRoutes = require('./routes/site');
-// const authRoutes = require('./routes/auth');
-// const adminRoutes = require('./routes/admin');
+const authRoutes = require('./routes/auth');
+const adminRoutes = require('./routes/admin');
 
 // Import the needed models
 const User = require('./models/user');
@@ -107,8 +107,8 @@ app.use((req, res, next) => {
 });
 
 // Follow the routing for the web app.
-// app.use('/admin', adminRoutes);
-// app.use(authRoutes);
+app.use('/admin', adminRoutes);
+app.use(authRoutes);
 app.use(siteRoutes);
 
 // Deliver the 500 page if the user is not authorized.
