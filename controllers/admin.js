@@ -11,7 +11,7 @@ const path = require('path');
 const Users = require('../models/user');
 
 // GET /admin/add-image
-exports.getAddProduct = (req, res, next) => {
+exports.getAddImage = (req, res, next) => {
     // Render the add image view
     return res.render('add-image.html', {
         title: 'Add Image',

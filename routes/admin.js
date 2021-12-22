@@ -11,8 +11,8 @@ const adminController = require('../controllers/admin');
 // Setup the router.
 const router = express.Router();
 
-// GET /admin/add-products
-// router.get('/add-products', isAuth, adminController.getAddProduct);
+// GET /admin/add-image
+router.get('/add-image', isAuth, adminController.getAddImage);
 
 // POST /admin/add-products
 // router.post(
