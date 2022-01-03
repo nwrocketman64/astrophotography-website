@@ -2,15 +2,13 @@
 
 {% block content %}
     <section>
-        <h2>Add an image</h2>
+        <h2>Edit an image</h2>
         <p class="errMessage">{{ errorMessage }}</p>
-        <form action="/admin/add-image" method="POST" enctype="multipart/form-data">
-            <label for="image">Image: </label>
-            <input type="file" name="image" id="image" required>
+        <form action="/admin/edit-image" method="POST">
             <label for="object">Object: </label>
             <input type="text" name="object" id="object" {% if object %} value="{{ object }}" {% endif %} required>
             <label for="date">Date and Time Taken: </label>
-            <input type="datetime-local" name="date" id="date" {% if date %} value="{{ date }}" {% endif %} required>
+            <input type="datetime-local" name="date" id="date" {% if date %} value="{{ date | date("YYYY-MM-DDThh:mm") }}" {% endif %} required>
             <label for="location">Location: </label>
             <input type="text" name="location" id="location" {% if location %} value="{{ location }}" {% endif %} required>
             <label for="telescope">Telescope Used: </label>
@@ -18,8 +16,9 @@
             <label for="comments">Comments: </label>
             <textarea name="comments" id="comments" rows="10" required>{% if comments %}{{ comments }}{% endif %}</textarea>
             <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+            <input type="hidden" name="imageId" value="{{ id }}">
             <br>
-            <button>Add Image</button>
+            <button>Edit Image</button>
         </form>
     </section>
 {% endblock %}

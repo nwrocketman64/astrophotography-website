@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <section>
+        <h2>Confirm to Delete Image - {{ object }}</h2>
+        <p>
+            Are you sure you want to delete the image, {{ object }} - {{ date | date }}?
+        </p>
+        <div class="selection">
+        <form action="/admin/delete-image/{{ id }}" method="POST">
+            <input type="hidden" name="id" value="{{ id }}">
+            <input type="submit" value="Yes">
+            <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+        </form>
+        <form action="/admin" method="GET">
+            <input type="submit" value="No">
+            <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+        </form>
+        <br>
+        </div>
+    </section>
+{% endblock %}

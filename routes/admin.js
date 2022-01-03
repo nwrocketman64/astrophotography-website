@@ -14,41 +14,42 @@ const router = express.Router();
 // GET /admin/add-image
 router.get('/add-image', isAuth, adminController.getAddImage);
 
-// POST /admin/add-products
-// router.post(
-//     '/add-products',
-//     isAuth,
-//     [
-//         body('name').not().isEmpty().trim().escape(),
-//         body('options').not().isEmpty().trim().escape(),
-//         body('description').not().isEmpty().trim().escape(),
-//         body('url').not().isEmpty().trim(),
-//         body('price').isNumeric(),
-//     ],
-//     adminController.postAddProduct
-// );
+// POST /admin/add-image
+router.post(
+    '/add-image',
+    isAuth,
+    [
+        body('object').not().isEmpty().trim().escape(),
+        body('date').not().isEmpty().trim().escape(),
+        body('location').not().isEmpty().trim().escape(),
+        body('telescope').not().isEmpty().trim().escape(),
+        body('comments').not().isEmpty().trim().escape(),
+    ],
+    adminController.postAddImage
+);
 
-// GET /admin/edit-product/:id
-// router.get('/edit-product/:id', isAuth, adminController.getEditProduct);
+// GET /admin/edit-image/:id
+router.get('/edit-image/:id', isAuth, adminController.getEditImage);
 
-// POST /admin/edit-product/:id
-// router.post(
-//     '/edit-product/:id',
-//     isAuth,
-//     [
-//         body('name').not().isEmpty().trim().escape(),
-//         body('options').not().isEmpty().trim().escape(),
-//         body('description').not().isEmpty().trim().escape(),
-//         body('url').not().isEmpty().trim(),
-//         body('price').isNumeric(),
-//     ],
-//     adminController.postEditProduct);
+// POST /admin/edit-image
+router.post(
+    '/edit-image',
+    isAuth,
+    [
+        body('object').not().isEmpty().trim().escape(),
+        body('date').not().isEmpty().trim().escape(),
+        body('location').not().isEmpty().trim().escape(),
+        body('telescope').not().isEmpty().trim().escape(),
+        body('comments').not().isEmpty().trim().escape(),
+    ],
+    adminController.postEditImage
+);
 
-// GET /admin/delete-product/:id
-// router.get('/delete-product/:id', isAuth, adminController.getDeleteProduct);
+// GET /admin/delete-image/:id
+router.get('/delete-image/:id', isAuth, adminController.getDeleteImage);
 
-// POST /admin/delete-product/:id
-// router.post('/delete-product/:id', isAuth, adminController.postDeleteProduct);
+// POST /admin/delete-image/:id
+router.post('/delete-image/:id', isAuth, adminController.postDeleteImage);
 
 // GET /admin/reset-password
 router.get('/reset-password', isAuth, adminController.getResetPassword);

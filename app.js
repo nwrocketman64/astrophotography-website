@@ -12,6 +12,7 @@ const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
 const multer = require('multer');
 const nunjucks = require('nunjucks');
+const nunjucksDate = require("nunjucks-date");
 
 // Import the error controller
 const errorController = require('./controllers/error');
@@ -48,12 +49,18 @@ const fileStorage = multer.diskStorage({
   }
 });
 
+// Configure nunjucksDate.
+nunjucksDate.setDefaultFormat("MMMM Do YYYY, h:mm:ss a");
+
 // Set render engine.
-nunjucks.configure('views', {
+let nunjucksEnv = nunjucks.configure('views', {
     autoescape: true,
     express: app
 });
 app.set('view engine', 'html');
+
+// Pass the enviroment
+nunjucksDate.install(nunjucksEnv);
 
 // Make the public folder open.
 app.use(express.static(path.join(__dirname, 'public')));
