@@ -3,15 +3,39 @@ const { validationResult } = require('express-validator');
 const nodemailer = require('nodemailer');
 
 // Import the model
-// const Products = require('../models/products');
+const MetaPic = require('../models/meta-pic');
 
 // GET / aka the homepage
 exports.getHome = (req, res, next) => {
     // Get all the products.
-    res.render('index.html', {
-        'title': 'Home',
-        'path': '/home',
-    });
+    MetaPic.find()
+        .lean()
+        .select('object data standImg')
+        .then(images => {
+            // Loop through the images to find the lastest images.
+            // Setup the starting images.
+            let lastestImage = images[0];
+            
+            // Loop through each item and find the one with the lastest date.
+            for (let i = 0; i < images.length; i++) {
+                if (lastestImage.date > images[i].date){
+                    lastestImage = images[i];
+                }
+            };
+
+            // Render the home page with the lastest image.
+            return res.render('index.html', {
+                title: 'Home',
+                path: '/home',
+                image: lastestImage,
+            });
+        })
+        .catch(err => {
+            // If there was an error, redirect to the 500 page.
+            const error = new Error(err);
+            error.httpStatusCode = 500;
+            return next(error);
+        });
 };
 
 // // GET /products

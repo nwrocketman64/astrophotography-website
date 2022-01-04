@@ -50,7 +50,7 @@ const fileStorage = multer.diskStorage({
 });
 
 // Configure nunjucksDate.
-nunjucksDate.setDefaultFormat("MMMM Do YYYY, h:mm:ss a");
+nunjucksDate.setDefaultFormat("MMMM Do YYYY, h:mm a");
 
 // Set render engine.
 let nunjucksEnv = nunjucks.configure('views', {

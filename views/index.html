@@ -2,8 +2,20 @@
 
 {% block content %}
     <section>
-        <h2>The Latest Image</h2>
+        <h2>Welcome</h2>
+        <p>
+            Welcome to my astrophotography website where I display
+            all the images that I have take through my telescopes.
+        </p>
     </section>
+    {% if image %}
+    <section>
+        <h2>The Latest Image</h2>
+        <div class="imageBlock">
+            <img src="data:image/{{ image.standImg.contentType }};base64,{{ image.standImg.data.toString('base64') }}" alt="{{ image.object }} - {{ image.date | date }}">
+        </div>
+    </section>
+    {% endif %}
     <section>
         <h2>Site Navigation</h2>
         <p>

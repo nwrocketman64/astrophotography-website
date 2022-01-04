@@ -5,7 +5,6 @@ const crypto = require('crypto');
 const sharp = require('sharp');
 const fs = require('fs');
 const path = require('path');
-const mongoose = require('mongoose');
 
 // Import the products model.
 const Users = require('../models/user');
@@ -141,8 +140,9 @@ exports.getEditImage = (req, res, next) => {
     const imageId = req.params.id;
 
     // Get the image information to be edited.
-    MetaPic.findOne({ id: imageId })
+    MetaPic.findById(imageId)
         .lean()
+        .select("object date location telescope comments")
         .then(image => {
             // Render the edit image page.
             return res.render('edit-image.html', {
@@ -220,6 +220,7 @@ exports.getDeleteImage = (req, res, next) => {
     // Find the image from the database.
     MetaPic.findOne({ _id: imageId })
         .lean()
+        .select("object date")
         .then(image => {
             return res.render('delete-image.html', {
                 'title': 'Delete Image - ' + image.object,
@@ -303,7 +304,9 @@ exports.getAdmin = (req, res, next) => {
     // Get all the images.
     return MetaPic.find()
         .lean()
+        .select("object date")
         .then(images => {
+            // Render the admin page.
             res.render('admin.html', {
                 'title': 'Admin',
                 'path': '/home',
