@@ -89,6 +89,33 @@ main {
     margin-bottom: -20px;
 }
 
+main img {
+    max-width: 100%;
+    margin: 0 auto;
+    display: block;
+}
+
+.title-text {
+    text-align: center;
+    color: red;
+}
+
+.btn {
+    text-align: center;
+	padding: 5px;
+	border-radius: 20px;
+	background-color: #f44336;
+	color: white;
+	max-width: 100px;
+	margin: 0 auto;
+    font-size: 1.5em;
+}
+
+.btn a:link, .btn a:visited {
+	text-decoration: none;
+	color: white;
+}
+
 /* Code for the contact form */
 .container label {
     display: block;

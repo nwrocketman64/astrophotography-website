@@ -18,7 +18,7 @@ exports.getHome = (req, res, next) => {
             
             // Loop through each item and find the one with the lastest date.
             for (let i = 0; i < images.length; i++) {
-                if (lastestImage.date > images[i].date){
+                if (lastestImage.date < images[i].date){
                     lastestImage = images[i];
                 }
             };
