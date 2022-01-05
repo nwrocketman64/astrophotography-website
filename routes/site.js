@@ -11,11 +11,14 @@ const router = express.Router();
 // GET / aka the homepage
 router.get('/', siteController.getHome);
 
-// // GET /products
-// router.get('/products', siteController.getProducts);
+// GET /images
+router.get('/images', siteController.getImages);
 
-// // GET /product-view/:id
-// router.get('/product-view/:id', siteController.getProduct);
+// GET /image-view/:id
+router.get('/image-view/:id', siteController.getImage);
+
+// GET /download-image/:id
+router.get('/download-image/:id', siteController.getFullImage);
 
 // GET /contact
 router.get('/contact', siteController.getContact);

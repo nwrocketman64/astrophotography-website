@@ -33,4 +33,9 @@
         text-align: center;
         font-size: 1.6em;
     }
+
+    /* Code for the image list page */
+    #image-list {
+        grid-template-columns: 1fr 1fr;
+    }
 }

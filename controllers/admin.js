@@ -47,6 +47,10 @@ exports.postAddImage = async (req, res, next) => {
 
     // Store the new image to buffer and then resize it.
     let imgBuffer = await sharp(path.join(path.dirname(process.mainModule.filename) + '/images/' + image.filename))
+        .toFormat("jpeg")
+        .jpeg({
+            quality: 80
+        })
         .toBuffer()
         .catch(err => {
             // If there was an error, redirect to the 500 page.

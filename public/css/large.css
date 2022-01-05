@@ -5,4 +5,9 @@
     #page {
         max-width: 900px;
     }
+
+    /* Code for the image list page */
+    #image-list {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
 }

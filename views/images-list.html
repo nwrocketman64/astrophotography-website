@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <section>
+        <h2>List of Images</h2>
+        <div id="image-list">
+            {% for image in images %}
+            <div class="image-item">
+                <img src="data:image/{{ image.thumbImg.contentType }};base64,{{ image.thumbImg.data.toString('base64') }}" alt="{{ image.object }} - {{ image.date | date }}">
+                <p>{{ image.object }} | {{ image.date | date('MM/DD/YYYY') }}</p>
+                <p class="btn"><a href="/image-view/{{ image._id }}">Details</a></p>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}

@@ -6,11 +6,12 @@ const nodemailer = require('nodemailer');
 const MetaPic = require('../models/meta-pic');
 
 // GET / aka the homepage
+// The function renders the home page.
 exports.getHome = (req, res, next) => {
     // Get all the products.
     MetaPic.find()
         .lean()
-        .select('object data standImg')
+        .select('object date standImg')
         .then(images => {
             // Loop through the images to find the lastest images.
             // Setup the starting images.
@@ -38,50 +39,76 @@ exports.getHome = (req, res, next) => {
         });
 };
 
-// // GET /products
-// // The function delivers the list of products to the user.
-// exports.getProducts = (req, res, next) => {
-//     // Get all the products.
-//     return Products.find({}, (err, items) => {
-//         // If there was an error, throw an error with 500 error code.
-//         if (err) {
-//             console.log(err);
-//             res.status(500).send('An error ocurred', err);
-//         }
-//         // If not, render the homepage with one item.
-//         else {
-//             res.render('products.html', {
-//                 'title': 'Products',
-//                 'path': '/products',
-//                 'items': items
-//             });
-//         }
-//     });
-// };
+// GET /images
+// The function renders the image list view.
+exports.getImages = (req, res, next) => {
+    MetaPic.find()
+        .lean()
+        .select('object date thumbImg')
+        .then(images => {
+            return res.render('images-list.html', {
+                title: 'List of Images',
+                path: '/images',
+                images: images,
+            });
+        })
+        .catch(err => {
+            // If there was an error, redirect to the 500 page.
+            const error = new Error(err);
+            error.httpStatusCode = 500;
+            return next(error);
+        });
+};
 
-// // GET /product-view/:id
-// // The function delivers the product view for a certain product.
-// exports.getProduct = (req, res, next) => {
-//     // Get the id from the URL.
-//     const productId = req.params.id;
+// GET /image-view/:id
+// The function delivers the image view for a certain photo.
+exports.getImage = (req, res, next) => {
+    // Get the image id from the URL.
+    const imageId = req.params.id;
 
-//     // Find the product from the database.
-//     return Products.findOne({_id: productId}, (err, item) => {
-//         // If there was an error, redirect to the 500 page.
-//         if (err) {
-//             console.log(err);
-//             res.status(500).send('An error occurred', err);
-//         }
-//         // If not, deliever the product view page.
-//         else {
-//             res.render('product-view.html', {
-//                 'title': item['title'],
-//                 'path': '/products',
-//                 'item': item
-//             });
-//         }
-//     });
-// };
+    // Find the image and metadata from the database.
+    MetaPic.findById(imageId)
+        .lean()
+        .select('object date location telescope comments standImg')
+        .then(image => {
+            return res.render('image-view.html', {
+                title: 'View of ' + image.object,
+                path: '/images',
+                image: image,
+            });
+        })
+        .catch(err => {
+            // If there was an error, redirect to the 500 page.
+            const error = new Error(err);
+            error.httpStatusCode = 500;
+            return next(error);
+        });
+};
+
+// GET /download-image/:id
+// The function sends the full size image to be download by the user.
+exports.getFullImage = (req, res, next) => {
+    // Get the image id from the URL.
+    const imageId = req.params.id;
+
+    // Get the full size photo from the database.
+    return MetaPic.findById(imageId)
+        .lean()
+        .select('fullImg')
+        .then(image => {
+            // Set the contentType for the response.
+            res.contentType(image.fullImg.contentType);
+
+            // Send the image data.
+            res.send(image.fullImg.data);
+        })
+        .catch(err => {
+            // If there was an error, redirect to the 500 page.
+            const error = new Error(err);
+            error.httpStatusCode = 500;
+            next(error);
+        });
+};
 
 // GET /contact
 // The function delivers the contact form to the user.

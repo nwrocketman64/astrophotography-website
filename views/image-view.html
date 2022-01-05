@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <section>
+        <img src="data:image/{{ image.standImg.contentType }};base64,{{ image.standImg.data.toString('base64') }}" alt="{{ image.object }} - {{ image.date | date }}">
+        <h2>Details for {{ image.object }}</h2>
+        <table>
+            <tr>
+                <td>Object in the Image</td>
+                <td>{{ image.object }}</td>
+            </tr>
+            <tr>
+                <td>Date and Time Taken</td>
+                <td>{{ image.date | date }}</td>
+            </tr>
+            <tr>
+                <td>Location</td>
+                <td>{{ image.location }}</td>
+            </tr>
+            <tr>
+                <td>Telescope Used</td>
+                <td>{{ image.telescope }}</td>
+            </tr>
+            <tr>
+                <td>Other Comments</td>
+                <td>{{ image.comments }}</td>
+            </tr>
+        </table>
+        <p class="btn"><a href="/download-image/{{ image._id }}">Download</a></p>
+        <p>
+            Click on the button to download the full size image.
+        </p>
+    </section>
+{% endblock %}
