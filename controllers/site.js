@@ -9,26 +9,16 @@ const MetaPic = require('../models/meta-pic');
 // The function renders the home page.
 exports.getHome = (req, res, next) => {
     // Get all the products.
-    MetaPic.find()
+    MetaPic.findOne()
         .lean()
+        .sort('-date')
         .select('object date standImg')
         .then(images => {
-            // Loop through the images to find the lastest images.
-            // Setup the starting images.
-            let lastestImage = images[0];
-            
-            // Loop through each item and find the one with the lastest date.
-            for (let i = 0; i < images.length; i++) {
-                if (lastestImage.date < images[i].date){
-                    lastestImage = images[i];
-                }
-            };
-
             // Render the home page with the lastest image.
             return res.render('index.html', {
                 title: 'Home',
                 path: '/home',
-                image: lastestImage,
+                image: images,
             });
         })
         .catch(err => {
@@ -45,13 +35,17 @@ exports.getImages = async (req, res, next) => {
     // Get the page number from the URL.
     let page = parseInt(req.params.page);
 
+    // Validate the page number.
     if (!page || page === "" || page <= 0 || !Number.isInteger(page)) {
+        // If the validation fails, set page to one as default.
         page = 1;
     };
 
+    // Get the total number of records in the collection.
     let totalDoc = 0;
     await MetaPic.estimatedDocumentCount()
         .then(results => {
+            // Save the number of documents.
             totalDoc = results;
         })
         .catch(err => {
@@ -61,32 +55,44 @@ exports.getImages = async (req, res, next) => {
             return next(error);
         });
 
+    // Compute the number of pages in for all the photos.
     let last = Math.ceil(totalDoc / 9);
+
+    // If the page is greater than the last page, set the page to the last.
     if (page > last) {
         page = last
     };
 
+    // Get all the images for the current page.
     MetaPic.find()
         .lean()
+        .sort('-date')
         .skip((9 * page) - 9)
         .limit(9)
         .select('object date thumbImg')
         .then(images => {
+            // Declare the other needed values.
             let first = false;
             let prev = '';
             let next = '';
 
+            // If the page is greater than 1.
             if (page > 1) {
+                // Set first to true and compute the prev page.
                 first = 1;
                 prev = page - 1;
             };
 
+            // If the page is the last page.
             if (last == page) {
+                // Set last link to nothing.
                 last = '';
             } else {
+                // If not, compute the next page.
                 next = page + 1;
             };
 
+            // Render the image list page.
             return res.render('images-list.html', {
                 title: 'List of Images',
                 path: '/images',
