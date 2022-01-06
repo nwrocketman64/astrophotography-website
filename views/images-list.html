@@ -12,5 +12,14 @@
             </div>
             {% endfor %}
         </div>
+        <div id="image-page">
+            <p>
+                {% if prev %}<a href="/images/{{ prev }}"><< Previous</a>{% endif %}
+                {% if first %}<a href="/images/1">1</a>{% endif %}
+                <span id="page-number">{{ current }}</span>
+                {% if last %}<a href="/images/{{ last }}">{{ last }}</a>{% endif %}
+                {% if next %}<a href="/images/{{ next }}">Next >></a>{% endif %}
+            </p>
+        </div>
     </section>
 {% endblock %}

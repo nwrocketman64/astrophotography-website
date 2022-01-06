@@ -39,17 +39,63 @@ exports.getHome = (req, res, next) => {
         });
 };
 
-// GET /images
+// GET /images/:page
 // The function renders the image list view.
-exports.getImages = (req, res, next) => {
+exports.getImages = async (req, res, next) => {
+    // Get the page number from the URL.
+    let page = parseInt(req.params.page);
+
+    if (!page || page === "" || page <= 0 || !Number.isInteger(page)) {
+        page = 1;
+    };
+
+    let totalDoc = 0;
+    await MetaPic.estimatedDocumentCount()
+        .then(results => {
+            totalDoc = results;
+        })
+        .catch(err => {
+            // If there was an error, redirect to the 500 page.
+            const error = new Error(err);
+            error.httpStatusCode = 500;
+            return next(error);
+        });
+
+    let last = Math.ceil(totalDoc / 9);
+    if (page > last) {
+        page = last
+    };
+
     MetaPic.find()
         .lean()
+        .skip((9 * page) - 9)
+        .limit(9)
         .select('object date thumbImg')
         .then(images => {
+            let first = false;
+            let prev = '';
+            let next = '';
+
+            if (page > 1) {
+                first = 1;
+                prev = page - 1;
+            };
+
+            if (last == page) {
+                last = '';
+            } else {
+                next = page + 1;
+            };
+
             return res.render('images-list.html', {
                 title: 'List of Images',
                 path: '/images',
                 images: images,
+                current: page,
+                first: first,
+                last: last,
+                prev: prev,
+                next: next,
             });
         })
         .catch(err => {

@@ -11,8 +11,8 @@ const router = express.Router();
 // GET / aka the homepage
 router.get('/', siteController.getHome);
 
-// GET /images
-router.get('/images', siteController.getImages);
+// GET /images/:page?
+router.get('/images/:page?', siteController.getImages);
 
 // GET /image-view/:id
 router.get('/image-view/:id', siteController.getImage);

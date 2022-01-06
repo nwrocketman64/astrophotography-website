@@ -161,8 +161,16 @@ form button {
 }
 
 .image-item img {
-    border: 2px solid blue;
+    border: 2px solid red;
     border-radius: 15px 15px 15px 15px;
+}
+
+#image-page {
+    text-align: center;
+}
+
+#page-number {
+    font-weight: bolder;
 }
 
 /* Code for the view image page */
