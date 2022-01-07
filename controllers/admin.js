@@ -104,15 +104,15 @@ exports.postAddImage = async (req, res, next) => {
         comments: comments,
         fullImg: {
             data: imgBuffer,
-            contentType: image.mimetype,
+            contentType: "image/jpeg",
         },
         standImg: {
             data: standImage,
-            contentType: image.mimetype,
+            contentType: "image/jpeg",
         },
         thumbImg: {
             data: thumbImage,
-            contentType: image.mimetype,
+            contentType: "image/jpeg",
         },
     };
 

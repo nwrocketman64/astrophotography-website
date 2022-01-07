@@ -60,7 +60,13 @@ exports.getImages = async (req, res, next) => {
 
     // If the page is greater than the last page, set the page to the last.
     if (page > last) {
-        page = last
+        page = last;
+
+        // If there is no content, set page and last to 1;
+        if (page <= 0) {
+           page = 1;
+           last = 1;
+        }; 
     };
 
     // Get all the images for the current page.
@@ -144,21 +150,21 @@ exports.getFullImage = (req, res, next) => {
     const imageId = req.params.id;
 
     // Get the full size photo from the database.
-    return MetaPic.findById(imageId)
+    MetaPic.findById(imageId)
         .lean()
-        .select('fullImg')
+        .select('object date fullImg')
         .then(image => {
-            // Set the contentType for the response.
-            res.contentType(image.fullImg.contentType);
-
-            // Send the image data.
-            res.send(image.fullImg.data);
+            return res.render('download-image.html', {
+                title: 'Full View of ' + image.object,
+                path: '/images',
+                image: image,
+            });
         })
         .catch(err => {
             // If there was an error, redirect to the 500 page.
             const error = new Error(err);
             error.httpStatusCode = 500;
-            next(error);
+            return next(error);
         });
 };
 

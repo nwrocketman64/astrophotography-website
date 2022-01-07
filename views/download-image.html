@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <section>
+        <img src="data:image/{{ image.fullImg.contentType }};base64,{{ image.fullImg.data.toString('base64') }}" alt="{{ image.object }} - {{ image.date | date }}">
+    </section>
+{% endblock %}
