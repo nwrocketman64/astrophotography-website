@@ -308,6 +308,7 @@ exports.getAdmin = (req, res, next) => {
     // Get all the images.
     return MetaPic.find()
         .lean()
+        .sort('-date')
         .select("object date")
         .then(images => {
             // Render the admin page.
