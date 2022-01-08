@@ -29,20 +29,24 @@ code. I used a version of node.js which was provided by
 
 # Libraries Used
 Some of the key libraries that I used for this website include
-* Express - The main web framework.
-* Express Session - Used to make logging in possible.
-* Express Validator - Used to validate and sanitize user inputs.
-* Csurf - Provide CSRF protection to the website.
-* Bcypt - Used to encrypt passwords and compare hashes.
-* Mongoose - The library used to control the MongoDB.
-* Multer - Used to process images submitted to the webite.
-* Nodemailer - Used in the contact form to send an email to myself.
-* Nunjucks - The main templating engine used in the project.
-* Nunjucks Date - Provides a date filter for the templating engine.
-* Sharp - The library used to process the images when received.
+
+* [Express](https://expressjs.com/) - The main web framework.
+* [Express Session](http://expressjs.com/en/resources/middleware/session.html) - Used to make logging in possible.
+* [Express Validator](https://express-validator.github.io/docs/) - Used to validate and sanitize user inputs.
+* [Csurf](http://expressjs.com/en/resources/middleware/csurf.html) - Provide CSRF protection to the website.
+* [Bcypt](https://www.npmjs.com/package/bcrypt) - Used to encrypt passwords and compare hashes.
+* [Mongoose](https://mongoosejs.com/) - The library used to control the MongoDB.
+* [Multer](https://www.npmjs.com/package/multer) - Used to process images submitted to the webite.
+* [Nodemailer](https://nodemailer.com/about/) - Used in the contact form to send an email to myself.
+* [Nunjucks](https://mozilla.github.io/nunjucks/) - The main templating engine used in the project.
+* [Nunjucks Date](https://www.npmjs.com/package/nunjucks-date) - Provides a date filter for the templating engine.
+* [Sharp](https://sharp.pixelplumbing.com/) - The library used to process the images when received.
+* [Nodemon](https://nodemon.io/) - Used in developing the web app as it restarts the app every time you make a change.
 
 # Useful Websites
 These were a few website that I found to be very helpful in building this website
+
+* [NodeJS - The Complete Guide (MVC, REST APIs, GraphQL, Deno)](https://www.udemy.com/course/nodejs-the-complete-guide/)
 * [Upload and Retrieve Image on MongoDB using Mongoose](https://www.geeksforgeeks.org/upload-and-retrieve-image-on-mongodb-using-mongoose/)
 * [Create Pagination with Node.js, MongoDB, Express and EJS Step by Step from Scratch](https://evdokimovm.github.io/javascript/nodejs/mongodb/pagination/expressjs/ejs/bootstrap/2017/08/20/create-pagination-with-nodejs-mongodb-express-and-ejs-step-by-step-from-scratch.html)
 * [Mongoose Count](https://kb.objectrocket.com/mongo-db/mongoose-count-726)
