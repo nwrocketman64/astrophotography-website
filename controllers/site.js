@@ -12,7 +12,7 @@ exports.getHome = (req, res, next) => {
     MetaPic.findOne()
         .lean()
         .sort('-date')
-        .select('object date standImg')
+        .select('object date fullImg')
         .then(images => {
             // Render the home page with the lastest image.
             return res.render('index.html', {
@@ -75,7 +75,7 @@ exports.getImages = async (req, res, next) => {
         .sort('-date')
         .skip((9 * page) - 9)
         .limit(9)
-        .select('object date thumbImg')
+        .select('object date fullImg')
         .then(images => {
             // Declare the other needed values.
             let first = false;
@@ -127,7 +127,7 @@ exports.getImage = (req, res, next) => {
     // Find the image and metadata from the database.
     MetaPic.findById(imageId)
         .lean()
-        .select('object date location telescope comments standImg')
+        .select('object date location telescope comments fullImg')
         .then(image => {
             return res.render('image-view.html', {
                 title: 'View of ' + image.object,
@@ -145,28 +145,28 @@ exports.getImage = (req, res, next) => {
 
 // GET /download-image/:id
 // The function sends the full size image to be download by the user.
-exports.getFullImage = (req, res, next) => {
-    // Get the image id from the URL.
-    const imageId = req.params.id;
+// exports.getFullImage = (req, res, next) => {
+//     // Get the image id from the URL.
+//     const imageId = req.params.id;
 
-    // Get the full size photo from the database.
-    MetaPic.findById(imageId)
-        .lean()
-        .select('object date fullImg')
-        .then(image => {
-            return res.render('download-image.html', {
-                title: 'Full View of ' + image.object,
-                path: '/images',
-                image: image,
-            });
-        })
-        .catch(err => {
-            // If there was an error, redirect to the 500 page.
-            const error = new Error(err);
-            error.httpStatusCode = 500;
-            return next(error);
-        });
-};
+//     // Get the full size photo from the database.
+//     MetaPic.findById(imageId)
+//         .lean()
+//         .select('object date fullImg')
+//         .then(image => {
+//             return res.render('download-image.html', {
+//                 title: 'Full View of ' + image.object,
+//                 path: '/images',
+//                 image: image,
+//             });
+//         })
+//         .catch(err => {
+//             // If there was an error, redirect to the 500 page.
+//             const error = new Error(err);
+//             error.httpStatusCode = 500;
+//             return next(error);
+//         });
+// };
 
 // GET /contact
 // The function delivers the contact form to the user.

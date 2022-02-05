@@ -7,7 +7,7 @@
 
 {% block content %}
     <section>
-        <img src="data:image/{{ image.standImg.contentType }};base64,{{ image.standImg.data.toString('base64') }}" alt="{{ image.object }} - {{ image.date | date }}">
+        <img src="/bucket/stand-{{ image.fullImg }}" alt="{{ image.object }} - {{ image.date | date }}">
         <h2>Details for {{ image.object }}</h2>
         <table>
             <tr>
@@ -31,7 +31,7 @@
                 <td>{{ image.comments }}</td>
             </tr>
         </table>
-        <p class="btn"><a href="/download-image/{{ image._id }}">View Full Size Image</a></p>
+        <p class="btn"><a href="/bucket/{{ image.fullImg }}" download>Download Full Image</a></p>
         <p>
             Click on the button to download the full size image.
         </p>

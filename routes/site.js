@@ -18,7 +18,7 @@ router.get('/images/:page?', siteController.getImages);
 router.get('/image-view/:id', siteController.getImage);
 
 // GET /download-image/:id
-router.get('/download-image/:id', siteController.getFullImage);
+// router.get('/download-image/:id', siteController.getFullImage);
 
 // GET /contact
 router.get('/contact', siteController.getContact);

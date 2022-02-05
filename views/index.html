@@ -16,7 +16,7 @@
     {% if image %}
     <section>
         <h2>The Latest Image</h2>
-        <img src="data:image/{{ image.standImg.contentType }};base64,{{ image.standImg.data.toString('base64') }}" alt="{{ image.object }} - {{ image.date | date }}">
+        <img src="/bucket/stand-{{ image.fullImg }}" alt="{{ image.object }} - {{ image.date | date }}">
         <p class="title-text">
             {{ image.object }} - taken on {{ image.date | date }}
         </p>

@@ -45,12 +45,11 @@ exports.postAddImage = async (req, res, next) => {
         });
     };
 
+    console.log(path.join(path.dirname(process.mainModule.filename) + '/public/bucket' + image.filename))
+
     // Store the new image to buffer and then resize it.
-    let imgBuffer = await sharp(path.join(path.dirname(process.mainModule.filename) + '/images/' + image.filename))
+    let imgBuffer = await sharp(path.join(path.dirname(process.mainModule.filename) + '/public/bucket/' + image.filename))
         .toFormat("jpeg")
-        .jpeg({
-            quality: 80
-        })
         .toBuffer()
         .catch(err => {
             // If there was an error, redirect to the 500 page.
@@ -69,7 +68,7 @@ exports.postAddImage = async (req, res, next) => {
         .jpeg({
             quality: 80
         })
-        .toBuffer()
+        .toFile(path.join(path.dirname(process.mainModule.filename) + '/public/bucket/stand-' + image.filename))
         .catch(err => {
             // If there was an error, redirect to the 500 page.
             const error = new Error(err);
@@ -87,7 +86,7 @@ exports.postAddImage = async (req, res, next) => {
         .jpeg({
             quality: 80
         })
-        .toBuffer()
+        .toFile(path.join(path.dirname(process.mainModule.filename) + '/public/bucket/thumb-' + image.filename))
         .catch(err => {
             // If there was an error, redirect to the 500 page.
             const error = new Error(err);
@@ -102,18 +101,7 @@ exports.postAddImage = async (req, res, next) => {
         location: location,
         telescope: telescope,
         comments: comments,
-        fullImg: {
-            data: imgBuffer,
-            contentType: "image/jpeg",
-        },
-        standImg: {
-            data: standImage,
-            contentType: "image/jpeg",
-        },
-        thumbImg: {
-            data: thumbImage,
-            contentType: "image/jpeg",
-        },
+        fullImg: image.filename,
     };
 
     // Push the data to the database.
@@ -124,12 +112,12 @@ exports.postAddImage = async (req, res, next) => {
             return res.status(500).send('An error ocurred', err);
         } else {
             // If it worked, Delete the original images.
-            fs.unlink(path.join(path.dirname(process.mainModule.filename) + '/images/' + image.filename), (err) => {
-                if (err) {
-                    console.error(err)
-                    return res.status(500).send('An error occurred', err);
-                }
-            });
+            // fs.unlink(path.join(path.dirname(process.mainModule.filename) + '/images/' + image.filename), (err) => {
+            //     if (err) {
+            //         console.error(err)
+            //         return res.status(500).send('An error occurred', err);
+            //     }
+            // });
 
             // Then return to the admin page.
             return res.redirect('/admin');  

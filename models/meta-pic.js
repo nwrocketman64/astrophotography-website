@@ -28,19 +28,19 @@ const metaSchema = new Schema({
     },
     fullImg:
     {
-        data: Buffer,
-        contentType: String,
+        type: String,
+        required: true
     },
-    standImg:
-    {
-        data: Buffer,
-        contentType: String,
-    },
-    thumbImg:
-    {
-        data: Buffer,
-        contentType: String,
-    },
+    // standImg:
+    // {
+    //     type: String,
+    //     required: true
+    // },
+    // thumbImg:
+    // {
+    //     type: String,
+    //     required: true
+    // },
 });
 
 // Export the schema.
