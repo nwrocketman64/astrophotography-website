@@ -1,10 +1,12 @@
 # Overview
 This is the main codebase for the my Astrophotography website. The code here is made open-source
 under Apache License 2.0 and you are free to look at the code to either add any suggestments to
-improve the code or to copy it and use it as the base template for your website. This website includes features such 
-cookie session and image uploads. The website is designed to run through
-[Heroku](https://www.heroku.com/).
-This website is designed to run on Nodejs version 16.13.1.
+improve the code or to copy it and use it as the base template for your website. This website
+includes features such cookie session and image uploads. The website is designed to run on any
+Linux server or Windows server. This website is designed to run on Nodejs version 16.13.1. I used
+NodeSource to get the correct packages installed on my machine but as long as you are using version
+16, you should be good. This website also used MongoDB as the main database and you can use either
+[MongoDB Atlas](https://www.mongodb.com/cloud/atlas) or just host MongoDB locally on your server.
 
 # Installing
 To install the website for running on your computer, you can clone the codebase either by
@@ -56,6 +58,6 @@ These were a few website that I found to be very helpful in building this websit
 * [ExpressJS Tutorial](https://www.tutorialspoint.com/expressjs/index.htm)
 
 # Website Link
-This is the link to active website deployed from Heroku.
+This is the link to active website deployed.
 
-[Nathan's Astro Images](https://astrophotography.herokuapp.com/)
+[Amateur Astro Image](https://www.amateurastroimage.com/)
