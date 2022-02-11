@@ -6,7 +6,7 @@
         <ul>
         {% for image in images %}
             <li>
-                {{ image.object }}, {{ image.date | date }} | <a href="/admin/edit-image/{{ image._id }}">Edit Image</a> | <a href="/admin/delete-image/{{ image._id }}">Delete Image</a>
+                {{ image.object }}, <time datetime="{{ image.date | date('YYYY-MM-DDTHH:mm') }}">{{ image.date | date }}</time> | <a href="/admin/edit-image/{{ image._id }}">Edit Image</a> | <a href="/admin/delete-image/{{ image._id }}">Delete Image</a>
             </li>
         {% endfor %}
         </ul>

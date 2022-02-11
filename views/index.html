@@ -9,8 +9,9 @@
     <section>
         <h2>Welcome</h2>
         <p>
-            Welcome to my astrophotography website where I display
-            all the images that I have take through my telescopes.
+            Welcome to my Amateur Astro Image where I display
+            all the images that I have to take through my
+            telescopes.
         </p>
     </section>
     {% if image %}
@@ -18,7 +19,7 @@
         <h2>The Latest Image</h2>
         <img src="/bucket/stand-{{ image.fullImg }}" alt="{{ image.object }} - {{ image.date | date }}">
         <p class="title-text">
-            {{ image.object }} - taken on {{ image.date | date }}
+            {{ image.object }} - taken on <time datetime="{{ image.date | date('YYYY-MM-DDTHH:mm') }}">{{ image.date | date }}</time>
         </p>
         <p class="btn"><a href="/image-view/{{ image._id }}">Details</a></p>
     </section>
@@ -41,8 +42,5 @@
                 <a href="/about">About:</a> More information about the website.
             </li>
         </ul>
-        <p>
-            All links above are shown in the menu bar.
-        </p>
     </section>
 {% endblock %}

@@ -16,7 +16,7 @@
             </tr>
             <tr>
                 <td>Date and Time Taken</td>
-                <td>{{ image.date | date }}</td>
+                <td><time datetime="{{ image.date | date('YYYY-MM-DDTHH:mm') }}">{{ image.date | date }}</time></td>
             </tr>
             <tr>
                 <td>Location</td>

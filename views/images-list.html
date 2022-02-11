@@ -12,7 +12,7 @@
             {% for image in images %}
             <div class="image-item">
                 <img src="/bucket/thumb-{{ image.fullImg }}" alt="{{ image.object }} - {{ image.date | date }}">
-                <p>{{ image.object }} | {{ image.date | date('MM/DD/YYYY') }}</p>
+                <p>{{ image.object }} | <time datetime="{{ image.date | date('YYYY-MM-DDTHH:mm') }}">{{ image.date | date('MM/DD/YYYY') }}</time></p>
                 <p class="btn"><a href="/image-view/{{ image._id }}">Details</a></p>
             </div>
             {% endfor %}

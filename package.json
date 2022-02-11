@@ -1,6 +1,6 @@
 {
   "name": "astrophotography-website",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "The code base for the astrophotography website",
   "main": "app.js",
   "scripts": {
