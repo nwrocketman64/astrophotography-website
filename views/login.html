@@ -5,11 +5,15 @@
         <h2>Login</h2>
         <p>{{ errorMessage }}</p>
         <form action="/login" method="POST">
-            <label for="username">Username: </label>
-            <input type="text" id="username" name="username" {% if email %} value="{{ email }}" {% endif %}>
-            <label for="password">Password: </label>
-            <input type="password" id="password" name="password">
-            <button type="submit">Login</button>
+            <div>
+                <label for="username">Username: </label>
+                <input type="text" id="username" name="username" {% if email %} value="{{ email }}" {% endif %} required>
+            </div>
+            <div>
+                <label for="password">Password: </label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div><button type="submit">Login</button></div>
             <input type="hidden" name="_csrf" value="{{ csrfToken }}">
         </form>
     </section>

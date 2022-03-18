@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+
+{% block addons %}{% endblock %}
+
+{% block content %}
+    <section>
+        <h2>Version 1.1.2</h2>
+        <ul>
+            <li>Added the patch notes page to the website.</li>
+            <li>
+                Added links to the patch notes page to the footers
+                and in the about page.
+            </li>
+            <li>Updated the appearence for the contact form.</li>
+            <li>Fixed HTML5 validation for login page</li>
+            <li>Cleaned up the other forms in the admin section</li>
+        </ul>
+    </section>
+    <section>
+        <h2>GitHub Repo</h2>
+        <p>
+            The source code for this website is free to use and is
+            open-source under the Apache 2.0 License. The link to the
+            <a href="https://github.com/nwrocketman64/astrophotography-website">GitHub repo</a>.
+            The link is also in the footer of the website.
+        </p>
+        <h3>Libraries Used in this Websites</h3>
+        <ul>
+            <li>
+                <a href="https://expressjs.com/">Express</a> - The main web framework.
+            </li>
+            <li>
+                <a href="http://expressjs.com/en/resources/middleware/session.html">Express Session</a> - Used to make logging in possible.
+            </li>
+            <li>
+                <a href="https://express-validator.github.io/docs/">Express Validator</a> - Used to validate and sanitize user inputs.
+            </li>
+            <li>
+                <a href="http://expressjs.com/en/resources/middleware/csurf.html">Csurf</a> - Provide CSRF protection to the website.
+            </li>
+            <li>
+                <a href="https://www.npmjs.com/package/bcrypt">Bcypt</a> - Used to encrypt passwords and compare hashes.
+            </li>
+            <li>
+                <a href="https://mongoosejs.com/">Mongoose</a> - The library used to control the MongoDB.
+            </li>
+            <li>
+                <a href="https://www.npmjs.com/package/multer">Multer</a> - Used to process images submitted to the webite
+            </li>
+            <li>
+                <a href="https://nodemailer.com/about/">Nodemailer</a> - Used in the contact form to send an email to myself.
+            </li>
+            <li>
+                <a href="https://mozilla.github.io/nunjucks/">Nunjucks</a> - The main templating engine used in the project.
+            </li>
+            <li>
+                <a href="https://www.npmjs.com/package/nunjucks-date">Nunjucks Date</a> - Provides a date filter for the templating engine.
+            </li>
+            <li>
+                <a href="https://sharp.pixelplumbing.com/">Sharp</a> - The library used to process the images when received.
+            </li>
+            <li>
+                <a href="https://nodemon.io/">Nodemon</a> - Used for developing the website.
+            </li>
+            <li>
+                <a href="https://necolas.github.io/normalize.css/">Normalize.css</a> - The CSS normalizer that I chose to use for the webiste.
+            </li>
+        </ul>
+        <h3>Other Helpful Resources</h3>
+        <ul>
+            <li>
+                <a href="https://www.udemy.com/course/nodejs-the-complete-guide/">NodeJS - The Complete Guide (MVC, REST APIs, GraphQL, Deno)</a>
+            </li>
+            <li>
+                <a href="https://www.geeksforgeeks.org/upload-and-retrieve-image-on-mongodb-using-mongoose/">Upload and Retrieve Image on MongoDB using Mongoose</a>
+            </li>
+            <li>
+                <a href="https://evdokimovm.github.io/javascript/nodejs/mongodb/pagination/expressjs/ejs/bootstrap/2017/08/20/create-pagination-with-nodejs-mongodb-express-and-ejs-step-by-step-from-scratch.html">Create Pagination with Node.js, MongoDB, Express and EJS Step by Step from Scratch</a>
+            </li>
+            <li>
+                <a href="https://kb.objectrocket.com/mongo-db/mongoose-count-726">Mongoose Count</a>
+            </li>
+            <li>
+                <a href="https://www.digitalocean.com/community/tutorials/how-to-process-images-in-node-js-with-sharp">How To Process Images in Node.js With Sharp</a>
+            </li>
+            <li>
+                <a href="https://mozilla.github.io/nunjucks/templating.html">Templating</a>
+            </li>
+            <li>
+                <a href="https://www.w3schools.com/nodejs/nodejs_email.asp">Node.js Send an Email</a>
+            </li>
+            <li>
+                <a href="https://www.tutorialspoint.com/expressjs/index.htm">ExpressJS Tutorial</a>
+            </li>
+        </ul>
+    </section>
+{% endblock %}

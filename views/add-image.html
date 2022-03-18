@@ -5,21 +5,34 @@
         <h2>Add an image</h2>
         <p class="errMessage">{{ errorMessage }}</p>
         <form action="/admin/add-image" method="POST" enctype="multipart/form-data">
-            <label for="image">Image: </label>
-            <input type="file" name="image" id="image" required>
-            <label for="object">Object: </label>
-            <input type="text" name="object" id="object" {% if object %} value="{{ object }}" {% endif %} required>
-            <label for="date">Date and Time Taken: </label>
-            <input type="datetime-local" name="date" id="date" {% if date %} value="{{ date }}" {% endif %} required>
-            <label for="location">Location: </label>
-            <input type="text" name="location" id="location" {% if location %} value="{{ location }}" {% endif %} required>
-            <label for="telescope">Telescope Used: </label>
-            <input type="text" name="telescope" id="telescope" {% if telescope %} value="{{ telescope }}" {% endif %} required>
-            <label for="comments">Comments: </label>
-            <textarea name="comments" id="comments" rows="10" required>{% if comments %}{{ comments }}{% endif %}</textarea>
+            <div>
+                <label for="image">Image: </label>
+                <input type="file" name="image" id="image" required>
+            </div>
+            <div>
+                <label for="object">Object: </label>
+                <input type="text" name="object" id="object" {% if object %} value="{{ object }}" {% endif %} required>
+            </div>
+            <div>
+                <label for="date">Date and Time Taken: </label>
+                <input type="datetime-local" name="date" id="date" {% if date %} value="{{ date }}" {% endif %} required>
+            </div>
+            <div>
+                <label for="location">Location: </label>
+                <input type="text" name="location" id="location" {% if location %} value="{{ location }}" {% endif %} required>
+            </div>
+            <div>
+                <label for="telescope">Telescope Used: </label>
+                <input type="text" name="telescope" id="telescope" {% if telescope %} value="{{ telescope }}" {% endif %} required>
+            </div>
+            <div>
+                <label for="comments">Comments: </label>
+                <textarea name="comments" id="comments" rows="10" required>{% if comments %}{{ comments }}{% endif %}</textarea>
+            </div>
             <input type="hidden" name="_csrf" value="{{ csrfToken }}">
-            <br>
-            <button>Add Image</button>
+            <div>
+                <button>Add Image</button>
+            </div>
         </form>
     </section>
 {% endblock %}

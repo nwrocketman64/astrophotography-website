@@ -143,31 +143,6 @@ exports.getImage = (req, res, next) => {
         });
 };
 
-// GET /download-image/:id
-// The function sends the full size image to be download by the user.
-// exports.getFullImage = (req, res, next) => {
-//     // Get the image id from the URL.
-//     const imageId = req.params.id;
-
-//     // Get the full size photo from the database.
-//     MetaPic.findById(imageId)
-//         .lean()
-//         .select('object date fullImg')
-//         .then(image => {
-//             return res.render('download-image.html', {
-//                 title: 'Full View of ' + image.object,
-//                 path: '/images',
-//                 image: image,
-//             });
-//         })
-//         .catch(err => {
-//             // If there was an error, redirect to the 500 page.
-//             const error = new Error(err);
-//             error.httpStatusCode = 500;
-//             return next(error);
-//         });
-// };
-
 // GET /contact
 // The function delivers the contact form to the user.
 exports.getContact = (req, res, next) => {
@@ -239,5 +214,14 @@ exports.getAbout = (req, res, next) => {
     res.render('about.html', {
         'title': 'About Us',
         'path': '/about'
+    });
+};
+
+// GET /patch-notes
+exports.getPatchNotes = (req, res, next) => {
+    // Render the patch notes page.
+    res.render('patch-notes.html', {
+        'title': 'Patch Notes',
+        'path': '/about',
     });
 };

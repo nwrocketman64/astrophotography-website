@@ -38,5 +38,8 @@ router.post(
 // GET /about
 router.get('/about', siteController.getAbout);
 
+// GET /patch-notes
+router.get('/patch-notes', siteController.getPatchNotes);
+
 // Export the router
 module.exports = router;

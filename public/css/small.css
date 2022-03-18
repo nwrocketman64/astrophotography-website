@@ -1,7 +1,13 @@
 /* Code that affects the whole page */
+*,
+*::after,
+*::before {
+    box-sizing: inherit;
+}
+
 body {
     background-color: #EEE;
-    font-family: 'Quicksand', sans-serif;
+    font-family: 'Quicksand', Arial, Helvetica, sans-serif;
     font-size: larger;
     background-image: url("/img/Moon2-tmb.jpg");
     background-position: center;
@@ -141,13 +147,27 @@ form label {
     margin-top: 10px;
 }
 
-form input {
+form input, form textarea {
     display: block;
     padding: 10px;
+    width: 95%;
+    border: black 1px solid;
+    border-radius: 5px;
 }
 
 form button {
     margin-top: 10px;
+    padding: 10px;
+	border-radius: 5px;
+    font-size: 1.2rem;
+    border: black 1px solid;
+}
+
+form button:hover {
+    cursor: pointer;
+    color: white;
+    background-color: #464646;
+    transition: all 0.33s ease 0s;
 }
 
 /* Code for the image list page */
