@@ -19,11 +19,11 @@ router.post(
     '/add-image',
     isAuth,
     [
-        body('object').not().isEmpty().trim().escape(),
+        body('object').not().isEmpty().trim(),
         body('date').not().isEmpty().trim().escape(),
         body('location').not().isEmpty().trim().escape(),
         body('telescope').not().isEmpty().trim().escape(),
-        body('comments').not().isEmpty().trim().escape(),
+        body('comments').not().isEmpty().trim(),
     ],
     adminController.postAddImage
 );
@@ -36,11 +36,11 @@ router.post(
     '/edit-image',
     isAuth,
     [
-        body('object').not().isEmpty().trim().escape(),
+        body('object').not().isEmpty().trim(),
         body('date').not().isEmpty().trim().escape(),
         body('location').not().isEmpty().trim().escape(),
         body('telescope').not().isEmpty().trim().escape(),
-        body('comments').not().isEmpty().trim().escape(),
+        body('comments').not().isEmpty().trim(),
     ],
     adminController.postEditImage
 );

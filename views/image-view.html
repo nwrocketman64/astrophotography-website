@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 
-{% block addons %}{% endblock %}
+{% block addons %}
+    <meta name="description" content="{{ image.object }} - {{ image.comments | safe }}">
+    <meta name="author" content="Amateur Astro Image Team">
+{% endblock %}
 
 {% block content %}
     <section>
